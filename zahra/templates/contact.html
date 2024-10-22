@@ -42,10 +42,10 @@
   <nav class="site-nav">
     <div class="container">
       <div class="site-navigation">
-        <a href="index.html" class="logo m-0">Tour <span class="text-primary">.</span></a>
+        <a href="{% url 'index' %}" class="logo m-0">صبا شید <span class="text-primary">.</span></a>
 
         <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
-          <li class="active"><a href="index.html">Home</a></li>
+          <li class="active"><a href="{% url 'index' %}">خانه</a></li>
           <li class="has-children">
             <a href="#">Dropdown</a>
             <ul class="dropdown">
@@ -81,7 +81,7 @@
       <div class="row align-items-center">
         <div class="col-lg-6 mx-auto text-center">
           <div class="intro-wrap">
-            <h1 class="mb-0">Contact Us</h1>
+            <h1 class="mb-0">تماس با ما</h1>
             <p class="text-white">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
           </div>
         </div>
@@ -95,32 +95,33 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6 mb-5 mb-lg-0">
-          <form class="contact-form" data-aos="fade-up" data-aos-delay="200">
+          <form class="contact-form" data-aos="fade-up" data-aos-delay="200" action="{% url 'savamessageofuser' %}" method="post">
+              {% csrf_token %}
             <div class="row">
               <div class="col-6">
                 <div class="form-group">
-                  <label class="text-black" for="fname">First name</label>
-                  <input type="text" class="form-control" id="fname">
+                  <label class="text-black" for="fname">نام</label>
+                  <input type="text" class="form-control" id="fname" required name="firstname">
                 </div>
               </div>
               <div class="col-6">
                 <div class="form-group">
-                  <label class="text-black" for="lname">Last name</label>
-                  <input type="text" class="form-control" id="lname">
+                  <label class="text-black" for="lname">نام خانوادگی</label>
+                  <input type="text" class="form-control" id="lname" required name="lastname">
                 </div>
               </div>
             </div>
             <div class="form-group">
-              <label class="text-black" for="email">Email address</label>
-              <input type="email" class="form-control" id="email">
+              <label class="text-black" for="tel">شماره تماس</label>
+              <input type="tel" class="form-control" id="tel" required name="phone">
             </div>
 
             <div class="form-group">
-              <label class="text-black" for="message">Message</label>
-              <textarea name="" class="form-control" id="message" cols="30" rows="5"></textarea>
+              <label class="text-black" for="message">پیام</label>
+              <textarea name="message" class="form-control" id="message" cols="30" rows="5" required></textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary">Send Message</button>
+            <button type="submit" class="btn btn-primary">ارسال پیام</button>
           </form>
         </div>
         <div class="col-lg-5 ml-auto">
@@ -133,13 +134,13 @@
           <div class="quick-contact-item d-flex align-items-center mb-4">
             <span class="flaticon-phone-call"></span>
             <address class="text">
-              +1 202 2020 200
+              <a href="tel:+989107448401">+98 910 744 8401</a>
             </address>
           </div>
           <div class="quick-contact-item d-flex align-items-center mb-4">
             <span class="flaticon-mail"></span>
             <address class="text">
-              @info@mydomain.com
+              <a href="mailto:aliashtab77@gmail.com">aliashtab77@gmail.com</a>
             </address>
           </div>
         </div>
@@ -149,49 +150,49 @@
 
   
 
-  <div class="untree_co-section testimonial-section mt-5 bg-white">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-7 text-center">
-          <h2 class="section-title text-center mb-5">Testimonials</h2>
-
-          <div class="owl-single owl-carousel no-nav">
-            <div class="testimonial mx-auto">
-              <figure class="img-wrap">
-                <img src="{% static 'images/person_2.jpg' %}" alt="Image" class="img-fluid">
-              </figure>
-              <h3 class="name">Adam Aderson</h3>
-              <blockquote>
-                <p>&ldquo;There live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-              </blockquote>
-            </div>
-
-            <div class="testimonial mx-auto">
-              <figure class="img-wrap">
-                <img src="{% static 'images/person_3.jpg' %}" alt="Image" class="img-fluid">
-              </figure>
-              <h3 class="name">Lukas Devlin</h3>
-              <blockquote>
-                <p>&ldquo;There live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-              </blockquote>
-            </div>
-
-            <div class="testimonial mx-auto">
-              <figure class="img-wrap">
-                <img src="{% static 'images/person_4.jpg' %}" alt="Image" class="img-fluid">
-              </figure>
-              <h3 class="name">Kayla Bryant</h3>
-              <blockquote>
-                <p>&ldquo;There live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-              </blockquote>
-            </div>
-
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
+{#  <div class="untree_co-section testimonial-section mt-5 bg-white">#}
+{#    <div class="container">#}
+{#      <div class="row justify-content-center">#}
+{#        <div class="col-lg-7 text-center">#}
+{#          <h2 class="section-title text-center mb-5">Testimonials</h2>#}
+{##}
+{#          <div class="owl-single owl-carousel no-nav">#}
+{#            <div class="testimonial mx-auto">#}
+{#              <figure class="img-wrap">#}
+{#                <img src="{% static 'images/person_2.jpg' %}" alt="Image" class="img-fluid">#}
+{#              </figure>#}
+{#              <h3 class="name">Adam Aderson</h3>#}
+{#              <blockquote>#}
+{#                <p>&ldquo;There live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>#}
+{#              </blockquote>#}
+{#            </div>#}
+{##}
+{#            <div class="testimonial mx-auto">#}
+{#              <figure class="img-wrap">#}
+{#                <img src="{% static 'images/person_3.jpg' %}" alt="Image" class="img-fluid">#}
+{#              </figure>#}
+{#              <h3 class="name">Lukas Devlin</h3>#}
+{#              <blockquote>#}
+{#                <p>&ldquo;There live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>#}
+{#              </blockquote>#}
+{#            </div>#}
+{##}
+{#            <div class="testimonial mx-auto">#}
+{#              <figure class="img-wrap">#}
+{#                <img src="{% static 'images/person_4.jpg' %}" alt="Image" class="img-fluid">#}
+{#              </figure>#}
+{#              <h3 class="name">Kayla Bryant</h3>#}
+{#              <blockquote>#}
+{#                <p>&ldquo;There live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>#}
+{#              </blockquote>#}
+{#            </div>#}
+{##}
+{#          </div>#}
+{##}
+{#        </div>#}
+{#      </div>#}
+{#    </div>#}
+{#  </div>#}
 
 
 

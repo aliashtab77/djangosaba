@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from zahra.views import index, about,contact,elements,services
+from zahra.views import index, about,contact,elements,services, savamessageofuser, hotels, blogs, blogs_details
 
 
 from django.conf import settings
@@ -28,6 +28,10 @@ urlpatterns = [
     path('contact/', contact, name='contact'),
     path('elements/', elements, name='elements'),
     path('services/', services, name='services'),
+    path('messagefromuser/', savamessageofuser, name='savamessageofuser' ),
+    path('hotels/', hotels, name='hotels'),
+    path('blogs/', blogs, name='blogs'),
+    path('blogs/<int:id>', blogs_details, name='blogs_details'),
 ]
 
 

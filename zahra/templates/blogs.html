@@ -1,0 +1,305 @@
+{% load static %}
+<!DOCTYPE html>
+	<html lang="ir-fa" class="no-js">
+	<head>
+		<!-- Mobile Specific Meta -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Favicon-->
+		<link rel="shortcut icon" href="{% static 'mamad/img/fav.png' %}">
+		<!-- Author Meta -->
+		<meta name="author" content="starkteam">
+		<!-- Meta Description -->
+		<meta name="description" content="">
+		<!-- Meta Keyword -->
+		<meta name="keywords" content="">
+		<!-- meta character set -->
+		<meta charset="UTF-8">
+		<!-- Site Title -->
+		<title>Travel</title>
+
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
+			<!--
+			CSS
+			============================================= -->
+			<link rel="stylesheet" href="{% static 'mamad/css/linearicons.css' %}">
+			<link rel="stylesheet" href="{% static 'mamad/css/font-awesome.min.css' %}">
+			<link rel="stylesheet" href="{% static 'mamad/css/bootstrap.css' %}">
+			<link rel="stylesheet" href="{% static 'mamad/css/magnific-popup.css' %}">
+			<link rel="stylesheet" href="{% static 'mamad/css/jquery-ui.css' %}">
+			<link rel="stylesheet" href="{% static 'mamad/css/nice-select.css' %}">
+			<link rel="stylesheet" href="{% static 'mamad/css/animate.min.css' %}">
+			<link rel="stylesheet" href="{% static 'mamad/css/owl.carousel.css' %}">
+			<link rel="stylesheet" href="{% static 'mamad/css/main.css' %}">
+
+
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+		</head>
+		<body>
+            			 <div class="site-mobile-menu site-navbar-target">
+    <div class="site-mobile-menu-header">
+      <div class="site-mobile-menu-close">
+        <span class="icofont-close js-menu-toggle"></span>
+      </div>
+    </div>
+    <div class="site-mobile-menu-body"></div>
+  </div>
+
+  <nav class="site-nav">
+    <div class="container">
+      <div class="site-navigation">
+        <a href="{% url 'index' %}" class="logo m-0">صبا شید <span class="text-primary">.</span></a>
+
+        <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
+          <li><a href="{% url 'index' %}">خانه</a></li>
+            <li class="active"><a href="{% url 'hotels' %}">هتل ها</a></li>
+          <li class="has-children">
+            <a href="#">Dropdown</a>
+            <ul class="dropdown">
+              <li><a href="elements.html">Elements</a></li>
+              <li><a href="#">Menu One</a></li>
+              <li class="has-children">
+                <a href="#">Menu Two</a>
+                <ul class="dropdown">
+                  <li><a href="#">Sub Menu One</a></li>
+                  <li><a href="#">Sub Menu Two</a></li>
+                  <li><a href="#">Sub Menu Three</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Menu Three</a></li>
+            </ul>
+          </li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About</a></li>
+          <li class="active"><a href="contact.html">Contact Us</a></li>
+        </ul>
+
+        <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
+          <span></span>
+        </a>
+
+      </div>
+    </div>
+  </nav>
+
+
+
+
+
+			<!-- start banner Area -->
+			<section class="relative about-banner">
+				<div class="overlay overlay-bg"></div>
+				<div class="container">
+					<div class="row d-flex align-items-center justify-content-center">
+						<div class="about-content col-lg-12">
+							<h1 class="text-white">
+								بلاگ ها
+							</h1>
+							<p class="text-white link-nav"><a href="{% url 'index' %}">خانه</a>  <span class="lnr lnr-arrow-right"><a href="{% url 'blogs' %}">وبلاگ ها</a></p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- End banner Area -->
+			<section class="post-content-area section-gap">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-8 posts-list">
+                            {% if blogs %}
+                                {% for blog in blogs %}
+							<div class="single-post row">
+								<div class="col-lg-3  col-md-3 meta-details">
+									<div class="user-details row">
+										<p class="user-name col-lg-12 col-md-12 col-6"><a href="#">{{ blog.writers.name }}</a> <span class="lnr lnr-user"></span></p>
+										<p class="date col-lg-12 col-md-12 col-6"><a href="#">{{ blog.time }}</a> <span class="lnr lnr-calendar-full"></span></p>
+									</div>
+								</div>
+								<div class="col-lg-9 col-md-9 ">
+									<div class="feature-img">
+										<img class="img-fluid" src="{{ blog.avatar.url }}" alt="{{ blog.title }}">
+									</div>
+									<a class="posts-title" href="{% url 'blogs_details' blog.id %}"><h3>{{ blog.title }}</h3></a>
+									<p class="excert">
+بعد از اضافه شده کامل پنل ادمین اضافه میگردد
+									</p>
+									<a href="{% url 'blogs_details' blog.id %}" class="primary-btn">ببیشتر</a>
+								</div>
+							</div>
+                                {% endfor %}
+                            {% endif %}
+
+		                    <nav class="blog-pagination justify-content-center d-flex">
+		                        <ul class="pagination">
+                                    {% if blogs.has_previous %}
+		                            <li class="page-item">
+
+		                                <a href="{% url 'blogs' %}?page={{ blogs.previous_page_number }}" class="page-link" aria-label="قبلی">
+		                                    <span aria-hidden="true">
+		                                        <span class="lnr lnr-chevron-left"></span>
+		                                    </span>
+		                                </a>
+
+		                            </li>
+                                    {% endif %}
+                                {% if blogs.has_other_pages%}
+                                    {% for pa in p.page_range %}
+                                        {% if blogs.number == pa %}
+
+		                            <li class="page-item active"><a href="{% url 'blogs' %}?page={{ pa }}" class="page-link">{{ pa }}</a></li>
+                                        {% else %}
+                                        <li class="page-item"><a href="{% url 'blogs' %}?page={{ pa }}" class="page-link">{{ pa }}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                                {% if blogs.has_next %}
+		                            <li class="page-item">
+		                                <a href="{% url 'blogs' %}?page={{ blogs.next_page_number }}" class="page-link" aria-label="بعدی">
+		                                    <span aria-hidden="true">
+		                                        <span class="lnr lnr-chevron-right"></span>
+		                                    </span>
+		                                </a>
+		                            </li>
+                                {% endif %}
+		                        </ul>
+		                    </nav>
+						</div>
+						<div class="col-lg-4 sidebar-widgets">
+							<div class="widget-wrap">
+								<div class="single-sidebar-widget search-widget">
+									<form class="search-form" action="#">
+			                            <input placeholder="Search Posts" name="search" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Posts'" >
+			                            <button type="submit"><i class="fa fa-search"></i></button>
+			                        </form>
+								</div>
+								<div class="single-sidebar-widget post-category-widget">
+									<h4 class="category-title">Post Catgories</h4>
+									<ul class="cat-list">
+                                        {% if cats %}
+                                            {% for cat in cats %}
+										<li>
+											<a href="#" class="d-flex justify-content-center">
+												<p>{{ cat.name }}</p>
+											</a>
+										</li>
+                                            {% endfor %}
+                                        {% endif %}
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>	
+			</section>
+
+
+
+                          <div class="site-footer">
+    <div class="inner first">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-lg-4">
+            <div class="widget">
+              <h3 class="heading">About Tour</h3>
+              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            </div>
+            <div class="widget">
+              <ul class="list-unstyled social">
+                <li><a href="#"><span class="icon-twitter"></span></a></li>
+                <li><a href="#"><span class="icon-instagram"></span></a></li>
+                <li><a href="#"><span class="icon-facebook"></span></a></li>
+                <li><a href="#"><span class="icon-linkedin"></span></a></li>
+                <li><a href="#"><span class="icon-dribbble"></span></a></li>
+                <li><a href="#"><span class="icon-pinterest"></span></a></li>
+                <li><a href="#"><span class="icon-apple"></span></a></li>
+                <li><a href="#"><span class="icon-google"></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-2 pl-lg-5">
+            <div class="widget">
+              <h3 class="heading">Pages</h3>
+              <ul class="links list-unstyled">
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-2">
+            <div class="widget">
+              <h3 class="heading">Resources</h3>
+              <ul class="links list-unstyled">
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="widget">
+              <h3 class="heading">Contact</h3>
+              <ul class="list-unstyled quick-info links">
+                <li class="email"><a href="#">mail@example.com</a></li>
+                <li class="phone"><a href="#">+1 222 212 3819</a></li>
+                <li class="address"><a href="#">43 Raymouth Rd. Baltemoer, London 3910</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="inner dark">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-md-8 mb-3 mb-md-0 mx-auto">
+            <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://github.com/aliashtab77" class="link-highlight">starkteam</a>
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="overlayer"></div>
+  <div class="loader">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+			
+
+
+			<script src="{% static 'mamad/js/vendor/jquery-2.2.4.min.js' %}"></script>
+			<script src="{% static 'mamad/js/popper.min.js' %}"></script>
+			<script src="{% static 'mamad/js/vendor/bootstrap.min.js' %}"></script>
+			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>		
+ 			<script src="{% static 'mamad/js/jquery-ui.js' %}"></script>
+  			<script src="{% static 'mamad/js/easing.min.js' %}"></script>
+			<script src="{% static 'mamad/js/hoverIntent.js' %}"></script>
+			<script src="{% static 'mamad/js/superfish.min.js' %}"></script>
+			<script src="{% static 'mamad/js/jquery.ajaxchimp.min.js' %}"></script>
+			<script src="{% static 'mamad/js/jquery.magnific-popup.min.js' %}"></script>
+			<script src="{% static 'mamad/js/jquery.nice-select.min.js' %}"></script>
+			<script src="{% static 'mamad/js/owl.carousel.min.js' %}"></script>
+			<script src="{% static 'mamad/js/mail-script.js' %}"></script>
+			<script src="{% static 'mamad/js/main.js' %}"></script>
+
+
+
+        <script src="{% static 'js/aos.js' %}"></script>
+
+
+  <script src="{% static 'js/typed.js' %}"></script>
+
+  <script src="{% static 'js/custom.js' %}"></script>
+		</body>
+	</html>
