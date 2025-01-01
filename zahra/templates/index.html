@@ -671,6 +671,33 @@
 {% endif %}
 
 
+    {% if visas %}
+	<div class="untree_co-section">
+		<div class="container">
+			<div class="row text-center justify-content-center mb-5">
+				<div class="col-lg-7"><h2 class="section-title text-center">ویزا</h2></div>
+			</div>
+
+			<div class="owl-carousel owl-3-slider">
+                {% for item in visas %}
+				<div class="item">
+					<a class="media-thumb" href="{{ item.avatar.url }}" data-fancybox="gallery">
+						<div class="media-text">
+							<h3>{{ item.makan }}</h3>
+							<span class="location">{{ item.keshvar }}</span>
+						</div>
+						<img src="{{ item.avatar.url }}" alt="{{ item.makan }}" class="img-fluid">
+					</a>
+				</div>
+                {% endfor %}
+
+			</div>
+
+		</div>
+	</div>
+{% endif %}
+
+
     {% if tes %}
 	<div class="untree_co-section testimonial-section mt-5">
 		<div class="container">

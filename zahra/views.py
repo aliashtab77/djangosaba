@@ -2,8 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.core.paginator import Paginator
-from zahra.models import SliderModel, Information, PopularDestination, Testimonials, SpecialModel, MessagesModel, HotelModel, Category, BlogModel
-
+from zahra.models import SliderModel, Information, PopularDestination, Testimonials, SpecialModel, MessagesModel, HotelModel, Category, BlogModel, VisaDestination
 
 
 # Create your views here.
@@ -15,12 +14,14 @@ def index(request):
     tes = Testimonials.objects.all()
     specials = SpecialModel.objects.all()
     pop = PopularDestination.objects.all()
+    visa = VisaDestination.objects.all()
     if inf:
         inf = inf[0]
     context = {
         "slides" :sliders,
         "inf":inf,
         "pop":pop,
+        "visas": visa,
         "tes":tes,
         "specials":specials,
     }
