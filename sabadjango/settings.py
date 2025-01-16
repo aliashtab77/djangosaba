@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'zahra.apps.ZahraConfig',
-    'django_ckeditor_5'
+    'django_ckeditor_5',
+    'request'
 ]
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
@@ -53,6 +54,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'request.middleware.RequestMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -260,4 +262,11 @@ CKEDITOR_5_CONFIGS = {
 }
 
 # Define a constant in settings.py to specify file upload permissions
-CKEDITOR_5_FILE_UPLOAD_PERMISSION = "staff" 
+CKEDITOR_5_FILE_UPLOAD_PERMISSION = "staff"
+
+REQUEST_IGNORE_PATHS = (
+    r'^admin/[a-zA-Z0-9]*',
+    r'^static/[a-zA-Z0-9]*',
+    r'^media/[a-zA-Z0-9]*',
+
+)
