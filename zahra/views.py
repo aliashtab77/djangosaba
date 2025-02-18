@@ -71,8 +71,6 @@ def savamessageofuser(request):
 
 def hotels(request):
     hotels = HotelModel.objects.all()
-    print(hotels[0].star)
-    print(type(hotels[0].star))
     context = {
         "hotels":hotels,
         "ra":range(1, 6)
@@ -94,7 +92,9 @@ def blogs(request):
 
 def blogs_details(request, id):
     blogs = BlogModel.objects.get(id=id)
+    tags = blogs.tags.split(",")
     context = {
         "blog":blogs,
+        "tags":tags,
     }
     return render(request, 'blog-single.html', context=context)

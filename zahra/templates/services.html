@@ -30,50 +30,7 @@
 <body>
 
 
-  <div class="site-mobile-menu site-navbar-target">
-    <div class="site-mobile-menu-header">
-      <div class="site-mobile-menu-close">
-        <span class="icofont-close js-menu-toggle"></span>
-      </div>
-    </div>
-    <div class="site-mobile-menu-body"></div>
-  </div>
-
-  <nav class="site-nav">
-    <div class="container">
-      <div class="site-navigation">
-        <a href="index.html" class="logo m-0">Tour <span class="text-primary">.</span></a>
-
-        <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
-          <li><a href="index.html">Home</a></li>
-          <li class="has-children">
-            <a href="#">Dropdown</a>
-            <ul class="dropdown">
-              <li><a href="elements.html">Elements</a></li>
-              <li><a href="#">Menu One</a></li>
-              <li class="has-children">
-                <a href="#">Menu Two</a>
-                <ul class="dropdown">
-                  <li><a href="#">Sub Menu One</a></li>
-                  <li><a href="#">Sub Menu Two</a></li>
-                  <li><a href="#">Sub Menu Three</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Menu Three</a></li>
-            </ul>
-          </li>
-          <li class="active"><a href="services.html">Services</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact Us</a></li>
-        </ul>
-
-        <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
-          <span></span>
-        </a>
-
-      </div>
-    </div>
-  </nav>
+  {% include 'header.html' with services="active" only %}
 
 
   <div class="hero hero-inner">
@@ -81,8 +38,8 @@
       <div class="row align-items-center">
         <div class="col-lg-6 mx-auto text-center">
           <div class="intro-wrap">
-            <h1 class="mb-0">Our Services</h1>
-            <p class="text-white">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+            <h1 class="mb-0">خدمات ما</h1>
+{#            <p class="text-white">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>#}
           </div>
         </div>
       </div>
@@ -99,8 +56,8 @@
             <a href="#" class="d-block mb-3"><img src="{% static 'images/hero-slider-1.jpg' %}" alt="Image" class="img-fluid"></a>
             <div class="d-flex">
               <div>
-                <h3><a href="#">Excellence in Travel</a></h3>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                <h3><a href="#">تعالی در سفر</a></h3>
+                <p style="text-align: right">شرکت صباشید مزایای منحصربه‌فردی را به مشتریان خود ارائه می‌دهد که آن را از سایر رقبای صنعت گردشگری متمایز می‌کند</p>
               </div>
             </div>
           </div>
@@ -110,8 +67,9 @@
             <a href="#" class="d-block mb-3"><img src="{% static 'images/hero-slider-2.jpg' %}" alt="Image" class="img-fluid"></a>
             <div class="d-flex">
               <div>
-                <h3><a href="#">Discovering Best</a></h3>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                <h3><a href="#">کشف بهترین</a></h3>
+                <p style="text-align: right">
+صباشید با سابقه طولانی در برگزاری تورهای علمی و آموزشی برای دانشگاه‌ها و مؤسسات معتبر بین‌المللی، جایگاه ویژه‌ای در گردشگری آکادمیک دارد</p>
               </div>
             </div>
           </div>
@@ -121,8 +79,8 @@
             <a href="#" class="d-block mb-3"><img src="{% static 'images/hero-slider-3.jpg' %}" alt="Image" class="img-fluid"></a>
             <div class="d-flex">
               <div>
-                <h3><a href="#">A New Moments of Life</a></h3>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                <h3><a href="#"> خدمات CIP پرواز </a></h3>
+                <p style="text-align: right;"> سفر شما با آرامش و راحتی آغاز شود. پذیرایی اختصاصی، بدون معطلی در صف </p>
               </div>
             </div>
           </div>
@@ -132,8 +90,8 @@
             <a href="#" class="d-block mb-3"><img src="{% static 'images/hero-slider-4.jpg' %}" alt="Image" class="img-fluid"></a>
             <div class="d-flex">
               <div>
-                <h3><a href="#">Joy To Your Journey</a></h3>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                <h3><a href="#"> ضمانت بهترین قیمت </a></h3>
+                <p style="text-align: right"> مستقیم و بدون واسطه، ضمانت بهترین قیمت را به مشتریان خود ارائه می‌دهدیم</p>
               </div>
             </div>
           </div>
@@ -142,180 +100,111 @@
     </div>
   </div>
 
-  <div class="untree_co-section">
-    <div class="container">
-      <div class="row">
-        <div class="col-6 col-md-6 col-lg-3">
-          <div class="service text-center">
-            <span class="icon-paper-plane"></span>
-            <h3>Excellence in Travel</h3>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-          </div>
-        </div>
-        <div class="col-6 col-md-6 col-lg-3">
-          <div class="service text-center">
-            <span class="icon-tag"></span>
-            <h3>Discover Best</h3>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-          </div>
-        </div>
-        <div class="col-6 col-md-6 col-lg-3">
-          <div class="service text-center">
-            <span class="icon-user"></span>
-            <h3>A New Moments of Life</h3>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-          </div>
-        </div>
-        <div class="col-6 col-md-6 col-lg-3">
-          <div class="service text-center">
-            <span class="icon-support"></span>
-            <h3>Joy To Your Journey</h3>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+{#  <div class="untree_co-section">#}
+{#    <div class="container">#}
+{#      <div class="row">#}
+{#        <div class="col-6 col-md-6 col-lg-3">#}
+{#          <div class="service text-center">#}
+{#            <span class="icon-paper-plane"></span>#}
+{#            <h3>Excellence in Travel</h3>#}
+{#            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>#}
+{#          </div>#}
+{#        </div>#}
+{#        <div class="col-6 col-md-6 col-lg-3">#}
+{#          <div class="service text-center">#}
+{#            <span class="icon-tag"></span>#}
+{#            <h3>Discover Best</h3>#}
+{#            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>#}
+{#          </div>#}
+{#        </div>#}
+{#        <div class="col-6 col-md-6 col-lg-3">#}
+{#          <div class="service text-center">#}
+{#            <span class="icon-user"></span>#}
+{#            <h3>A New Moments of Life</h3>#}
+{#            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>#}
+{#          </div>#}
+{#        </div>#}
+{#        <div class="col-6 col-md-6 col-lg-3">#}
+{#          <div class="service text-center">#}
+{#            <span class="icon-support"></span>#}
+{#            <h3>Joy To Your Journey</h3>#}
+{#            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>#}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
+{#    </div>#}
+{#  </div>#}
 
   <div class="untree_co-section">
-    <div class="container">
-      <div class="row mb-5 justify-content-center">
-        <div class="col-lg-6 text-center">
-          <h2 class="section-title text-center mb-3">More Services</h2>
-          <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-        </div>
-      </div>
-      <div class="row align-items-stretch">
-        <div class="col-lg-4 order-lg-1">
-          <div class="h-100"><div class="frame h-100"><div class="feature-img-bg h-100" style="background-image: url('{% static 'images/hero-slider-1.jpg' %}');"></div></div></div>
-        </div>
+		<div class="container">
+			<div class="row mb-5 justify-content-center">
+				<div class="col-lg-6 text-center">
+					<h2 class="section-title text-center mb-3">خدمات ما</h2>
+					<p>کجا میری مهمه با کی میری مهم تر</p>
+				</div>
+			</div>
+			<div class="row align-items-stretch">
+				<div class="col-lg-4 order-lg-1">
+					<div class="h-100"><div class="frame h-100"><div class="feature-img-bg h-100" style="background-image: url('{% static 'images/hero-slider-1.jpg' %}');"></div></div></div>
+				</div>
 
-        <div class="col-6 col-sm-6 col-lg-4 feature-1-wrap d-md-flex flex-md-column order-lg-1" >
+				<div class="col-6 col-sm-6 col-lg-4 feature-1-wrap d-md-flex flex-md-column order-lg-1" >
 
-          <div class="feature-1 d-md-flex">
-            <div class="align-self-center">
-              <span class="flaticon-house display-4 text-primary"></span>
-              <h3>Beautiful Condo</h3>
-              <p class="mb-0">Even the all-powerful Pointing has no control about the blind texts.</p>
-            </div>
-          </div>
+					<div class="feature-1 d-md-flex">
+						<div class="align-self-center">
+							<span class="flaticon-house display-4 text-primary"></span>
+							<h3>خدمات از راه دور</h3>
+							<p class="mb-0" style="text-align: right;">امکان سفارش تمام خدمات ما از خانه بدون نیاز به حضور در آژانس</p>
+						</div>
+					</div>
 
-          <div class="feature-1 ">
-            <div class="align-self-center">
-              <span class="flaticon-restaurant display-4 text-primary"></span>
-              <h3>Restaurants & Cafe</h3>
-              <p class="mb-0">Even the all-powerful Pointing has no control about the blind texts.</p>
-            </div>
-          </div>
+					<div class="feature-1 ">
+						<div class="align-self-center">
+							<span class="flaticon-restaurant display-4 text-primary"></span>
+							<h3>ویزا</h3>
+							<p class="mb-0" style="text-align: right">دریافت ویزا مورد نیاز شما به راحتی رزرو یک میز در رستوران</p>
+						</div>
+					</div>
 
-        </div>
+				</div>
 
-        <div class="col-6 col-sm-6 col-lg-4 feature-1-wrap d-md-flex flex-md-column order-lg-3" >
+				<div class="col-6 col-sm-6 col-lg-4 feature-1-wrap d-md-flex flex-md-column order-lg-3" >
 
-          <div class="feature-1 d-md-flex">
-            <div class="align-self-center">
-              <span class="flaticon-mail display-4 text-primary"></span>
-              <h3>Easy to Connect</h3>
-              <p class="mb-0">Even the all-powerful Pointing has no control about the blind texts.</p>
-            </div>
-          </div>
+					<div class="feature-1 d-md-flex">
+						<div class="align-self-center">
+							<span class="flaticon-mail display-4 text-primary"></span>
+							<h3>ارتباط آسان</h3>
+							<p class="mb-0" style="text-align: right;">فقط کافی است سوال خود را برای ما ارسال کنید ما در سریع ترین حالت ممکن با شما تماس خواهیم گرفت</p>
+						</div>
+					</div>
 
-          <div class="feature-1 d-md-flex">
-            <div class="align-self-center">
-              <span class="flaticon-phone-call display-4 text-primary"></span>
-              <h3>24/7 Support</h3>
-              <p class="mb-0">Even the all-powerful Pointing has no control about the blind texts.</p>
-            </div>
-          </div>
+					<div class="feature-1 d-md-flex">
+						<div class="align-self-center">
+							<span class="flaticon-phone-call display-4 text-primary"></span>
+							<h3>پشتیبانی 24/7</h3>
+							<p class="mb-0" style="text-align: right">در هر روزی و در هر ساعتی حتی در روز های تعطیل در خدمت شما هستیم</p>
+						</div>
+					</div>
 
-        </div>
+				</div>
 
-      </div>
-    </div>
-  </div>
+			</div>
+		</div>
+	</div>
 
   <div class="py-5 cta-section">
-    <div class="container">
-      <div class="row text-center">
-        <div class="col-md-12">
-          <h2 class="mb-2 text-white">Lets you Explore the Best. Contact Us Now</h2>
-          <p class="mb-4 lead text-white text-white-opacity">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, fugit?</p>
-          <p class="mb-0"><a href="booking.html" class="btn btn-outline-white text-white btn-md font-weight-bold">Get in touch</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
+		<div class="container">
+			<div class="row text-center">
+				<div class="col-md-12">
+					<h2 class="mb-2 text-white">به شما امکان می دهیم بهترین ها را کشف کنید. اکنون با ما تماس بگیرید</h2>
+{#					<p class="mb-4 lead text-white text-white-opacity">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, fugit?</p>#}
+					<p class="mb-0"><a href="{% url 'contact' %}" class="btn btn-outline-white text-white btn-md font-weight-bold">در تماس باشید</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
 
-  <div class="site-footer">
-    <div class="inner first">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 col-lg-4">
-            <div class="widget">
-              <h3 class="heading">About Tour</h3>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-            </div>
-            <div class="widget">
-              <ul class="list-unstyled social">
-                <li><a href="#"><span class="icon-twitter"></span></a></li>
-                <li><a href="#"><span class="icon-instagram"></span></a></li>
-                <li><a href="#"><span class="icon-facebook"></span></a></li>
-                <li><a href="#"><span class="icon-linkedin"></span></a></li>
-                <li><a href="#"><span class="icon-dribbble"></span></a></li>
-                <li><a href="#"><span class="icon-pinterest"></span></a></li>
-                <li><a href="#"><span class="icon-apple"></span></a></li>
-                <li><a href="#"><span class="icon-google"></span></a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-2 pl-lg-5">
-            <div class="widget">
-              <h3 class="heading">Pages</h3>
-              <ul class="links list-unstyled">
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-2">
-            <div class="widget">
-              <h3 class="heading">Resources</h3>
-              <ul class="links list-unstyled">
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <div class="widget">
-              <h3 class="heading">Contact</h3>
-              <ul class="list-unstyled quick-info links">
-                <li class="email"><a href="#">mail@example.com</a></li>
-                <li class="phone"><a href="#">+1 222 212 3819</a></li>
-                <li class="address"><a href="#">43 Raymouth Rd. Baltemoer, London 3910</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-
-    <div class="inner dark">
-      <div class="container">
-        <div class="row text-center">
-          <div class="col-md-8 mb-3 mb-md-0 mx-auto">
-            <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://github.com/aliashtab77" class="link-highlight">starkteam</a>
-            </p>
-          </div>
-          
-        </div>
-      </div>
-    </div>
-  </div>
+  {% include 'footer.html' %}
 
   <div id="overlayer"></div>
   <div class="loader">

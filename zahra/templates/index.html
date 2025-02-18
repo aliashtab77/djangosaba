@@ -42,36 +42,7 @@
 <body>
 
 
-	<div class="site-mobile-menu site-navbar-target">
-		<div class="site-mobile-menu-header">
-			<div class="site-mobile-menu-close">
-				<span class="icofont-close js-menu-toggle"></span>
-			</div>
-		</div>
-		<div class="site-mobile-menu-body"></div>
-	</div>
-
-	<nav class="site-nav">
-		<div class="container">
-			<div class="site-navigation">
-				<a href="{% url 'index' %}" class="logo m-0">صباشید<span class="text-primary">.</span></a>
-
-				<ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
-					<li class="active"><a href="{% url 'index' %}">خانه</a></li>
-                    <li><a href="{% url 'hotels' %}">هتل ها</a></li>
-					<li><a href="{% url 'blogs' %}">بلاگ ها</a></li>
-					<li><a href="services.html">Services</a></li>
-					<li><a href="about.html">About</a></li>
-					<li><a href="{% url 'contact' %}">تماس با ما</a></li>
-				</ul>
-
-				<a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
-					<span></span>
-				</a>
-
-			</div>
-		</div>
-	</nav>
+	{% include 'header.html' with index="active" only %}
 
 
 	<div class="hero">
@@ -142,7 +113,7 @@
 			</div>
 		</div>
 	</div>
-
+{% comment %}
 	<section  class="travel-box">
 		<div class="container">
 			<div class="row">
@@ -545,14 +516,14 @@
 		</div><!--/.container-->
 
 	</section><!--/.travel-box-->
-
+{% endcomment %}
 
 	<div class="untree_co-section">
 		<div class="container">
 			<div class="row mb-5 justify-content-center">
 				<div class="col-lg-6 text-center">
-					<h2 class="section-title text-center mb-3">Our Services</h2>
-					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+					<h2 class="section-title text-center mb-3">خدمات ما</h2>
+					<p>کجا میری مهمه با کی میری مهم تر</p>
 				</div>
 			</div>
 			<div class="row align-items-stretch">
@@ -565,16 +536,16 @@
 					<div class="feature-1 d-md-flex">
 						<div class="align-self-center">
 							<span class="flaticon-house display-4 text-primary"></span>
-							<h3>Beautiful Condo</h3>
-							<p class="mb-0">Even the all-powerful Pointing has no control about the blind texts.</p>
+							<h3>خدمات از راه دور</h3>
+							<p class="mb-0" style="text-align: right;">امکان سفارش تمام خدمات ما از خانه بدون نیاز به حضور در آژانس</p>
 						</div>
 					</div>
 
 					<div class="feature-1 ">
 						<div class="align-self-center">
 							<span class="flaticon-restaurant display-4 text-primary"></span>
-							<h3>Restaurants & Cafe</h3>
-							<p class="mb-0">Even the all-powerful Pointing has no control about the blind texts.</p>
+							<h3>ویزا</h3>
+							<p class="mb-0" style="text-align: right">دریافت ویزا مورد نیاز شما به راحتی رزرو یک میز در رستوران</p>
 						</div>
 					</div>
 
@@ -585,16 +556,16 @@
 					<div class="feature-1 d-md-flex">
 						<div class="align-self-center">
 							<span class="flaticon-mail display-4 text-primary"></span>
-							<h3>Easy to Connect</h3>
-							<p class="mb-0">Even the all-powerful Pointing has no control about the blind texts.</p>
+							<h3>ارتباط آسان</h3>
+							<p class="mb-0" style="text-align: right;">فقط کافی است سوال خود را برای ما ارسال کنید ما در سریع ترین حالت ممکن با شما تماس خواهیم گرفت</p>
 						</div>
 					</div>
 
 					<div class="feature-1 d-md-flex">
 						<div class="align-self-center">
 							<span class="flaticon-phone-call display-4 text-primary"></span>
-							<h3>24/7 Support</h3>
-							<p class="mb-0">Even the all-powerful Pointing has no control about the blind texts.</p>
+							<h3>پشتیبانی 24/7</h3>
+							<p class="mb-0" style="text-align: right">در هر روزی و در هر ساعتی حتی در روز های تعطیل در خدمت شما هستیم</p>
 						</div>
 					</div>
 
@@ -654,7 +625,7 @@
 			<div class="owl-carousel owl-3-slider">
                 {% for item in pop %}
 				<div class="item">
-					<a class="media-thumb" href="{{ item.avatar.url }}" data-fancybox="gallery">
+					<a class="media-thumb" href="{% if item.slug %}{% url 'blogs_details' item.slug.id %}{% endif %}">
 						<div class="media-text">
 							<h3>{{ item.makan }}</h3>
 							<span class="location">{{ item.keshvar }}</span>
@@ -681,7 +652,9 @@
 			<div class="owl-carousel owl-3-slider">
                 {% for item in visas %}
 				<div class="item">
-					<a class="media-thumb" href="{{ item.avatar.url }}" data-fancybox="gallery">
+					<a class="media-thumb" href="{% if item.slug%}
+					{% url 'blogs_details' item.slug.id %}
+					{% endif %}">
 						<div class="media-text">
 							<h3>{{ item.makan }}</h3>
 							<span class="location">{{ item.keshvar }}</span>
@@ -730,23 +703,23 @@
 			<div class="row justify-content-center text-center mb-5">
 				<div class="col-lg-6">
 					<h2 class="section-title text-center mb-3">پیشنهادات ویژه و تخفیف ها</h2>
-					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+{#					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>#}
 				</div>
 			</div>
 			<div class="row">
                 {% for item in specials %}
 				<div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
 					<div class="media-1">
-						<a href="#" class="d-block mb-3"><img src="{{ item.avatar.url }}" alt="{{ item.makan }}" class="img-fluid"></a>
+						<a href="{% url 'blogs_details' item.slug.id %}" class="d-block mb-3"><img src="{{ item.avatar.url }}" alt="{{ item.makan }}" class="img-fluid"></a>
 						<span class="d-flex align-items-center loc mb-2">
 							<span class="icon-room mr-3"></span>
 							<span>{{ item.keshvar }}</span>
 						</span>
 						<div class="d-flex align-items-center">
 							<div>
-								<h3><a href="#">{{ item.makan }}</a></h3>
+								<h3><a href="{% url 'blogs_details' item.slug.id %}">{{ item.makan }}</a></h3>
 								<div class="price ml-auto">
-									<span>{{ item.price }} تومانن </span>
+									<span>تومان {{ item.price }}  </span>
 								</div>
 							</div>
 
@@ -762,45 +735,45 @@
 
 
 
-	<div class="untree_co-section">
-		<div class="container">
-			<div class="row justify-content-between align-items-center">
-
-				<div class="col-lg-6">
-					<figure class="img-play-video">
-						<a id="play-video" class="video-play-button" href="https://www.youtube.com/watch?v=mwtbEGNABWU" data-fancybox>
-							<span></span>
-						</a>
-						<img src="{% static 'images/hero-slider-2.jpg' %}" alt="Image" class="img-fluid rounded-20">
-					</figure>
-				</div>
-
-				<div class="col-lg-5">
-					<h2 class="section-title text-left mb-4">به ویدیوی تور نگاهی بیندازید</h2>
-					<p>بسیار دور، پشت کلمه کوه، دور از کشورهای Vokalia و Consonantia، متون کور زندگی می کنند. آنها از هم جدا شده در Bookmarksgrove درست در ساحل معناشناسی، یک اقیانوس بزرگ زبانی زندگی می کنند.</p>
-
-					<p class="mb-4">رودخانه کوچکی به نام دودن در کنار محل آنها جریان دارد و امکانات لازم را برای آن تامین می کند. این کشوری بهشتی است که در آن قسمت های برشته شده جملات به دهان شما پرواز می کند.</p>
-
-					<ul class="list-unstyled two-col clearfix">
-						<li>فعالیت های تفریحی در فضای باز</li>
-						<li>خطوط هوایی</li>
-						<li>Car Rentals</li>
-						<li>Cruise Lines</li>
-						<li>Hotels</li>
-						<li>Railways</li>
-						<li>Travel Insurance</li>
-						<li>Package Tours</li>
-						<li>Insurance</li>
-						<li>Guide Books</li>
-					</ul>
-
-					<p><a href="#" class="btn btn-primary">Get Started</a></p>
-
-
-				</div>
-			</div>
-		</div>
-	</div>
+{#	<div class="untree_co-section">#}
+{#		<div class="container">#}
+{#			<div class="row justify-content-between align-items-center">#}
+{##}
+{#				<div class="col-lg-6">#}
+{#					<figure class="img-play-video">#}
+{#						<a id="play-video" class="video-play-button" href="https://www.youtube.com/watch?v=mwtbEGNABWU" data-fancybox>#}
+{#							<span></span>#}
+{#						</a>#}
+{#						<img src="{% static 'images/hero-slider-2.jpg' %}" alt="Image" class="img-fluid rounded-20">#}
+{#					</figure>#}
+{#				</div>#}
+{##}
+{#				<div class="col-lg-5">#}
+{#					<h2 class="section-title text-left mb-4">به ویدیوی تور نگاهی بیندازید</h2>#}
+{#					<p>بسیار دور، پشت کلمه کوه، دور از کشورهای Vokalia و Consonantia، متون کور زندگی می کنند. آنها از هم جدا شده در Bookmarksgrove درست در ساحل معناشناسی، یک اقیانوس بزرگ زبانی زندگی می کنند.</p>#}
+{##}
+{#					<p class="mb-4">رودخانه کوچکی به نام دودن در کنار محل آنها جریان دارد و امکانات لازم را برای آن تامین می کند. این کشوری بهشتی است که در آن قسمت های برشته شده جملات به دهان شما پرواز می کند.</p>#}
+{##}
+{#					<ul class="list-unstyled two-col clearfix">#}
+{#						<li>فعالیت های تفریحی در فضای باز</li>#}
+{#						<li>خطوط هوایی</li>#}
+{#						<li>Car Rentals</li>#}
+{#						<li>Cruise Lines</li>#}
+{#						<li>Hotels</li>#}
+{#						<li>Railways</li>#}
+{#						<li>Travel Insurance</li>#}
+{#						<li>Package Tours</li>#}
+{#						<li>Insurance</li>#}
+{#						<li>Guide Books</li>#}
+{#					</ul>#}
+{##}
+{#					<p><a href="#" class="btn btn-primary">Get Started</a></p>#}
+{##}
+{##}
+{#				</div>#}
+{#			</div>#}
+{#		</div>#}
+{#	</div>#}
 
 
 
@@ -809,83 +782,14 @@
 			<div class="row text-center">
 				<div class="col-md-12">
 					<h2 class="mb-2 text-white">به شما امکان می دهیم بهترین ها را کشف کنید. اکنون با ما تماس بگیرید</h2>
-					<p class="mb-4 lead text-white text-white-opacity">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, fugit?</p>
+{#					<p class="mb-4 lead text-white text-white-opacity">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, fugit?</p>#}
 					<p class="mb-0"><a href="{% url 'contact' %}" class="btn btn-outline-white text-white btn-md font-weight-bold">در تماس باشید</a></p>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<div class="site-footer">
-		<div class="inner first">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 col-lg-4">
-						<div class="widget">
-							<h3 class="heading">About Tour</h3>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-						</div>
-						<div class="widget">
-							<ul class="list-unstyled social">
-								<li><a href="#"><span class="icon-twitter"></span></a></li>
-								<li><a href="#"><span class="icon-instagram"></span></a></li>
-								<li><a href="#"><span class="icon-facebook"></span></a></li>
-								<li><a href="#"><span class="icon-linkedin"></span></a></li>
-								<li><a href="#"><span class="icon-dribbble"></span></a></li>
-								<li><a href="#"><span class="icon-pinterest"></span></a></li>
-								<li><a href="#"><span class="icon-apple"></span></a></li>
-								<li><a href="#"><span class="icon-google"></span></a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-2 pl-lg-5">
-						<div class="widget">
-							<h3 class="heading">Pages</h3>
-							<ul class="links list-unstyled">
-								<li><a href="#">Blog</a></li>
-								<li><a href="#">About</a></li>
-								<li><a href="#">Contact</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-2">
-						<div class="widget">
-							<h3 class="heading">Resources</h3>
-							<ul class="links list-unstyled">
-								<li><a href="#">Blog</a></li>
-								<li><a href="#">About</a></li>
-								<li><a href="#">Contact</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-4">
-						<div class="widget">
-							<h3 class="heading">Contact</h3>
-							<ul class="list-unstyled quick-info links">
-								<li class="email"><a href="#">mail@example.com</a></li>
-								<li class="phone"><a href="#">+1 222 212 3819</a></li>
-								<li class="address"><a href="#">43 Raymouth Rd. Baltemoer, London 3910</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-
-
-		<div class="inner dark">
-			<div class="container">
-				<div class="row text-center">
-					<div class="col-md-8 mb-3 mb-md-0 mx-auto">
-						<p>Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://github.com/aliashtab77" class="link-highlight">starkteam</a>
-						</p>
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</div>
+	{% include 'footer.html' %}
 
 	<div id="overlayer"></div>
 	<div class="loader">
