@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from zahra.views import index, about,contact,elements,services, savamessageofuser, hotels, blogs, blogs_details
 
 
@@ -31,7 +31,8 @@ urlpatterns = [
     path('messagefromuser/', savamessageofuser, name='savamessageofuser' ),
     path('hotels/', hotels, name='hotels'),
     path('blogs/', blogs, name='blogs'),
-    path('blogs/<int:id>', blogs_details, name='blogs_details'),
+    # path('blogs/<int:id>', blogs_details, name='blogs_details'),
+    re_path(r'(?P<slug>[^/]+)/?$', blogs_details, name='blogs_details')
 ]
 
 

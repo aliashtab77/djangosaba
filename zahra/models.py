@@ -136,6 +136,7 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 class BlogModel(models.Model):
+    slug = models.SlugField(unique=True,allow_unicode=True,verbose_name="اسلاگ")
     title = models.CharField(max_length=255)
     avatar = models.ImageField(upload_to="blogs")
     category = models.ForeignKey(Category, on_delete=models.CASCADE)

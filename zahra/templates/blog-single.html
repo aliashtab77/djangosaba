@@ -55,7 +55,7 @@
 							<h1 class="text-white">
                                 {{ blog.title }}
 							</h1>	
-							<p class="text-white link-nav"><a href="{% url 'index' %}">خانه </a>  <span class="lnr lnr-arrow-right"></span><a href="{% url 'blogs' %}">وبلاگ ها</a> <span class="lnr lnr-arrow-right"></span> <a href="{% url 'blogs_details' 1 %}">{{ blog.title }}</a></p>
+							<p class="text-white link-nav"><a href="{% url 'index' %}">خانه </a>  <span class="lnr lnr-arrow-right"></span><a href="{% url 'blogs' %}">وبلاگ ها</a> <span class="lnr lnr-arrow-right"></span> <a href="{% url 'blogs_details' blog.slug %}">{{ blog.title }}</a></p>
 						</div>	
 					</div>
 				</div>

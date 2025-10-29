@@ -90,8 +90,8 @@ def blogs(request):
     }
     return render(request, 'blogs.html', context=context)
 
-def blogs_details(request, id):
-    blogs = BlogModel.objects.get(id=id)
+def blogs_details(request, slug):
+    blogs = BlogModel.objects.get(slug=slug)
     tags = blogs.tags.split(",")
     context = {
         "blog":blogs,

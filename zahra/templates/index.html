@@ -625,7 +625,7 @@
 			<div class="owl-carousel owl-3-slider">
                 {% for item in pop %}
 				<div class="item">
-					<a class="media-thumb" href="{% if item.slug %}{% url 'blogs_details' item.slug.id %}{% endif %}">
+					<a class="media-thumb" href="{% if item.slug %}{% url 'blogs_details' item.slug.slug %}{% endif %}">
 						<div class="media-text">
 							<h3>{{ item.makan }}</h3>
 							<span class="location">{{ item.keshvar }}</span>
@@ -653,7 +653,7 @@
                 {% for item in visas %}
 				<div class="item">
 					<a class="media-thumb" href="{% if item.slug%}
-					{% url 'blogs_details' item.slug.id %}
+					{% url 'blogs_details' item.slug.slug %}
 					{% endif %}">
 						<div class="media-text">
 							<h3>{{ item.makan }}</h3>
@@ -710,14 +710,14 @@
                 {% for item in specials %}
 				<div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
 					<div class="media-1">
-						<a href="{% url 'blogs_details' item.slug.id %}" class="d-block mb-3"><img src="{{ item.avatar.url }}" alt="{{ item.makan }}" class="img-fluid"></a>
+						<a href="{% url 'blogs_details' item.slug.slug %}" class="d-block mb-3"><img src="{{ item.avatar.url }}" alt="{{ item.makan }}" class="img-fluid"></a>
 						<span class="d-flex align-items-center loc mb-2">
 							<span class="icon-room mr-3"></span>
 							<span>{{ item.keshvar }}</span>
 						</span>
 						<div class="d-flex align-items-center">
 							<div>
-								<h3><a href="{% url 'blogs_details' item.slug.id %}">{{ item.makan }}</a></h3>
+								<h3><a href="{% url 'blogs_details' item.slug.slug %}">{{ item.makan }}</a></h3>
 								<div class="price ml-auto">
 									<span>تومان {{ item.price }}  </span>
 								</div>

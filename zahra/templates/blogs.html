@@ -123,9 +123,9 @@
 									<div class="feature-img">
 										<img class="img-fluid" src="{{ blog.avatar.url }}" alt="{{ blog.title }}">
 									</div>
-									<a class="posts-title" href="{% url 'blogs_details' blog.id %}"><h3>{{ blog.title }}</h3></a>
+									<a class="posts-title" href="{% url 'blogs_details' blog.slug %}"><h3>{{ blog.title }}</h3></a>
 									<p class="excert">{{ blog.short | safe }}</p>
-									<a href="{% url 'blogs_details' blog.id %}" class="primary-btn">ببیشتر</a>
+									<a href="{% url 'blogs_details' blog.slug %}" class="primary-btn">ببیشتر</a>
 								</div>
 							</div>
                                 {% endfor %}
