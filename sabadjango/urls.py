@@ -32,7 +32,7 @@ urlpatterns = [
     path('hotels/', hotels, name='hotels'),
     path('blogs/', blogs, name='blogs'),
     # path('blogs/<int:id>', blogs_details, name='blogs_details'),
-    re_path(r'(?P<slug>[^/]+)/?$', blogs_details, name='blogs_details')
+    re_path(r'blog/(?P<slug>[^/]+)/?$', blogs_details, name='blogs_details')
 ]
 
 

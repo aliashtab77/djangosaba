@@ -1,7 +1,7 @@
 asgiref==3.8.1
 Django==5.1.1
 django-admin-interface==0.29.2
-django-ckeditor-5==0.2.15
+django-ckeditor-5==0.2.18
 django-colorfield==0.11.0
 django-request==1.6.3
 pillow==10.4.0

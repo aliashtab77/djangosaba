@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'zahra.apps.ZahraConfig',
     'django_ckeditor_5',
-    'request'
+    'request',
+
 ]
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
@@ -136,8 +137,6 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
 
 customColorPalette = [
     {

@@ -1,0 +1,166 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <title>📚 بلاگ صباشید | راهنمای کامل ویزا، تورهای خارجی و داخلی</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="جدیدترین راهنماهای سفر، نکات مهم اخذ ویزا، مقاصد تورهای خارجی و داخلی. با بلاگ صباشید هوشمندانه سفر کنید.">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Arizonia&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="{% static 'mahdieh/css/animate.css' %}">
+  
+  <link rel="stylesheet" href="{% static 'mahdieh/css/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'mahdieh/css/owl.theme.default.min.css' %}">
+  <link rel="stylesheet" href="{% static 'mahdieh/css/magnific-popup.css' %}">
+
+  <link rel="stylesheet" href="{% static 'mahdieh/css/bootstrap-datepicker.css' %}">
+  <link rel="stylesheet" href="{% static 'mahdieh/css/jquery.timepicker.css' %}">
+
+  
+  <link rel="stylesheet" href="{% static 'mahdieh/css/flaticon.css' %}">
+  <link rel="stylesheet" href="{% static 'mahdieh/css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}">
+</head>
+<body>
+
+ <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+   <div class="container">
+     <a class="navbar-brand" href="{% url 'index' %}">صباشید<span>Travel Agency</span></a>
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="oi oi-menu"></span> منو
+     </button>
+
+     <div class="collapse navbar-collapse" id="ftco-nav">
+       <ul class="navbar-nav ml-auto" style="text-align: right;">
+         <li class="nav-item"><a href="{% url 'index' %}" class="nav-link">خانه</a></li>
+         <li class="nav-item"><a href="{% url 'hotels' %}" class="nav-link">هتل ها</a></li>
+         <li class="nav-item active"><a href="{% url 'blogs' %}" class="nav-link">بلاگ ها</a></li>
+         <li class="nav-item"><a href="{% url 'services' %}" class="nav-link">خدمات ما</a></li>
+         <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">درباره ما</a></li>
+         <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">تماس با ما</a></li>
+       </ul>
+     </div>
+   </div>
+ </nav>
+ <!-- END nav -->
+ 
+ <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('{% static 'mahdieh/images/bg_1.jpg' %}');">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
+      <div class="col-md-9 ftco-animate pb-5 text-center">
+       <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'index' %}">خانه <i class="fa fa-chevron-left"></i></a></span> <span>بلاگ </span></p>
+       <h1 class="mb-0 bread">بلاگ</h1>
+     </div>
+   </div>
+ </div>
+</section>
+
+<section class="ftco-section">
+  <div class="container">
+    <div class="row d-flex">
+
+        {% for blog in blogs %}
+            <div class="col-md-4 d-flex ftco-animate">
+               <div class="blog-entry justify-content-end">
+                   <a href="{% url 'blogs_details' slug=blog.slug %}" class="block-20" style="background-image: url('{{ blog.avatar.url }}');"></a>
+                   <div class="text">
+                       <div class="d-flex align-items-center mb-4 topp">
+                           <div class="one">
+                               <span class="day">{{ blog.time.day }}</span>
+                           </div>
+                           <div class="two">
+                               <span class="yr">{{ blog.time.year }}</span>
+                               <span class="mos">{{ blog.time.month }}</span>
+                           </div>
+                       </div>
+                       <h3 class="heading" style="text-align: right"><a href="{% url 'blogs_details' slug=blog.slug %}">{{ blog.title }}</a></h3>
+                       <p style="text-align: right">{{ blog.short }}</p>
+                       <p style="text-align: right"><a href="{% url 'blogs_details' slug=blog.slug %}" class="btn btn-primary">بیشتر</a></p>
+                   </div>
+               </div>
+            </div>
+        {% empty %}
+            <h1>فعلا بلاگی ارائِه نمیشود به زودی مطالب به سایت افزوده خواهد شد</h1>
+        {% endfor %}
+
+</div>
+<div class="row mt-5">
+  <div class="col text-center">
+    <div class="block-27">
+      <ul>
+      {% if blogs.has_previous %}
+          <li><a href="{% url 'blogs' %}?page={{ blogs.previous_page_number }}">&lt;</a></li>
+      {% endif %}
+      {% if blogs.has_other_pages%}
+          {% for pa in p.page_range %}
+              {% if blogs.number == pa %}
+                <li class="active"><span>{{ pa }}</span></li>
+              {% else %}
+                <li><a href="{% url 'blogs' %}?page={{ pa }}">{{ pa }}</a></li>
+              {% endif %}
+          {% endfor %}
+      {% endif %}
+      {% if blogs.has_next %}
+          <li><a href="{% url 'blogs' %}?page={{ blogs.next_page_number }}">&gt;</a></li>
+      {% endif %}
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+</section>	
+
+<section class="ftco-intro ftco-section ftco-no-pt">
+ <div class="container">
+  <div class="row justify-content-center">
+   <div class="col-md-12 text-center">
+    <div class="img"  style="background-image: url({% static 'mahdieh/images/bg_2.jpg' %});">
+     <div class="overlay"></div>
+     <h2>ما صباشید هستیم</h2>
+     <p>ما شما را به سمت سفر رویایی خود هدایت می‌کنیم</p>
+     <p class="mb-0"><a href="{% url 'contact' %}" class="btn btn-primary px-4 py-3">تماس با ما</a></p>
+   </div>
+ </div>
+</div>
+</div>
+</section>
+
+{% include 'footer.html' %}
+
+
+
+<!-- loader -->
+<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+<script src="{% static 'mahdieh/js/jquery.min.js' %}"></script>
+<script src="{% static 'mahdieh/js/jquery-migrate-3.0.1.min.js' %}"></script>
+<script src="{% static 'mahdieh/js/popper.min.js' %}"></script>
+<script src="{% static 'mahdieh/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'mahdieh/js/jquery.easing.1.3.js' %}"></script>
+<script src="{% static 'mahdieh/js/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'mahdieh/js/jquery.stellar.min.js' %}"></script>
+<script src="{% static 'mahdieh/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'mahdieh/js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'mahdieh/js/jquery.animateNumber.min.js' %}"></script>
+<script src="{% static 'mahdieh/js/bootstrap-datepicker.js' %}"></script>
+<script src="{% static 'mahdieh/js/scrollax.min.js' %}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="{% static 'mahdieh/js/google-map.js' %}"></script>
+<script src="{% static 'mahdieh/js/main.js' %}"></script>
+<script src="{% static 'js/aos.js' %}"></script>
+
+
+  <script src="{% static 'js/typed.js' %}"></script>
+
+  <script src="{% static 'js/custom.js' %}"></script>
+
+</body>
+</html>

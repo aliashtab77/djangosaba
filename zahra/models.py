@@ -116,16 +116,16 @@ class HotelModel(models.Model):
     def __str__(self):
         return self.name
 
-class WriterModel(models.Model):
-    avatar = models.ImageField(upload_to="writers")
-    name = models.CharField(max_length=255, verbose_name="نام")
-    semat = models.CharField(max_length=255, verbose_name="سمت")
-    description = models.TextField(blank=True, null=True)
-    class Meta:
-        verbose_name = "نویسنده"
-        verbose_name_plural = "نویسندگان"
-    def __str__(self):
-        return self.name
+# class WriterModel(models.Model):
+#     avatar = models.ImageField(upload_to="writers")
+#     name = models.CharField(max_length=255, verbose_name="نام")
+#     semat = models.CharField(max_length=255, verbose_name="سمت")
+#     description = models.TextField(blank=True, null=True)
+#     class Meta:
+#         verbose_name = "نویسنده"
+#         verbose_name_plural = "نویسندگان"
+#     def __str__(self):
+#         return self.name
 
 
 class Category(models.Model):
@@ -141,9 +141,9 @@ class BlogModel(models.Model):
     avatar = models.ImageField(upload_to="blogs")
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     description = CKEditor5Field("توضیحات", config_name="extends", null=True)
-    short = CKEditor5Field('پیش نمایش', config_name='short', null=True)
+    short = models.TextField(verbose_name='پیش نمایش',null=True)
     time = models.DateField(auto_now=True)
-    writers = models.ForeignKey(WriterModel, on_delete=models.CASCADE)
+    # writers = models.ForeignKey(WriterModel, on_delete=models.CASCADE)
     tags = models.TextField(verbose_name="تگ ها(تگ های مورد نظر را با استفاده از کاما از یکدیگر جدا کنید)", null=True, blank=True)
     class Meta:
         verbose_name = "پست"

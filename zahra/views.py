@@ -3,8 +3,6 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.core.paginator import Paginator
 from zahra.models import SliderModel, Information, PopularDestination, Testimonials, SpecialModel, MessagesModel, HotelModel, Category, BlogModel, VisaDestination
-
-
 # Create your views here.
 
 
@@ -80,7 +78,7 @@ def hotels(request):
 def blogs(request):
     blogs = BlogModel.objects.all()
     categories = Category.objects.all()
-    p = Paginator(blogs, 2)
+    p = Paginator(blogs, 9)
     page = request.GET.get('page', 1)
     pages = p.page(page)
     context = {
@@ -88,7 +86,7 @@ def blogs(request):
         "blogs":pages,
         "p":p
     }
-    return render(request, 'blogs.html', context=context)
+    return render(request, 'blogmah.html', context=context)
 
 def blogs_details(request, slug):
     blogs = BlogModel.objects.get(slug=slug)
@@ -97,4 +95,4 @@ def blogs_details(request, slug):
         "blog":blogs,
         "tags":tags,
     }
-    return render(request, 'blog-single.html', context=context)
+    return render(request, 'blog-singlemah.html', context=context)
