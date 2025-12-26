@@ -76,7 +76,7 @@ def hotels(request):
     return render(request, 'hotels.html', context=context)
 
 def blogs(request):
-    blogs = BlogModel.objects.all()
+    blogs = BlogModel.objects.filter(published=True)
     categories = Category.objects.all()
     p = Paginator(blogs, 9)
     page = request.GET.get('page', 1)
@@ -94,5 +94,7 @@ def blogs_details(request, slug):
     context = {
         "blog":blogs,
         "tags":tags,
+        "schema":blogs.get_article_schema(request)
     }
+
     return render(request, 'blog-singlemah.html', context=context)

@@ -30,6 +30,9 @@
     <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}">
     <meta name="description" content="{{ blog.short }}">
     <meta name="keywords" content="{{ blog.tags }}">
+    <script type="application/ld+json">
+        {{ schema | safe }}
+    </script>
 </head>
 <body>
  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">

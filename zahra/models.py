@@ -1,5 +1,8 @@
 from django.db import models
 from django_ckeditor_5.fields import CKEditor5Field
+from django.urls import reverse
+from json import dumps
+from django.utils.html import strip_tags
 # Create your models here.
 
 
@@ -145,9 +148,50 @@ class BlogModel(models.Model):
     time = models.DateField(auto_now=True)
     # writers = models.ForeignKey(WriterModel, on_delete=models.CASCADE)
     tags = models.TextField(verbose_name="تگ ها(تگ های مورد نظر را با استفاده از کاما از یکدیگر جدا کنید)", null=True, blank=True)
+    time_updated = models.DateField(auto_now_add=True, verbose_name="زمان بروزرسانی")
+    published=models.BooleanField(default=False, verbose_name="انتشار")
     class Meta:
         verbose_name = "پست"
         verbose_name_plural = "پست ها"
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        # فرض بر این است که نام مسیر (name) در urls.py برابر با 'blog_details' است
+        return reverse('blogs_details', kwargs={'slug': self.slug})
+    def get_article_schema(self, request):
+        # ساخت URL کامل برای عکس و صفحه
+        url = request.build_absolute_uri(self.get_absolute_url())
+        image_url = request.build_absolute_uri(self.avatar.url) if self.avatar else ""
+
+        schema = {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": self.title,
+            "description": self.short,
+            "image": image_url,
+            "datePublished": self.time.isoformat(),
+            "dateModified": self.time_updated.isoformat(),
+            "publisher": {
+                "@type": "Organization",
+                "name": "صباشید پارس",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://sabashidpars.com/static/logo.png"
+                }
+            },
+            "author": {
+                "@type": "Person",
+                "name": "صباشید"
+            },
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": url
+            },
+            "datePublished": "2023-10-27T08:00:00+03:30",
+            "dateModified": "2023-10-28T12:00:00+03:30",
+            "keywords": self.tags,
+            "articleBody": strip_tags(self.description)
+        }
+        return dumps(schema, ensure_ascii=False)
 
