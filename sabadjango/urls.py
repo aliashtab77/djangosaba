@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include, re_path
-from zahra.views import index, about,contact,elements,services, savamessageofuser, hotels, blogs, blogs_details
+from zahra.views import index, about,contact,elements,services, savamessageofuser, hotels, blogs, blogs_details, sitemap_view
 
 
 from django.conf import settings
@@ -31,6 +31,7 @@ urlpatterns = [
     path('messagefromuser/', savamessageofuser, name='savamessageofuser' ),
     path('hotels/', hotels, name='hotels'),
     path('blogs/', blogs, name='blogs'),
+    path('sitemaps/<slug:slug>/', sitemap_view, name='sitemap'),
     # path('blogs/<int:id>', blogs_details, name='blogs_details'),
     re_path(r'blog/(?P<slug>[^/]+)/?$', blogs_details, name='blogs_details')
 ]

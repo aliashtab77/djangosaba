@@ -1,8 +1,8 @@
-from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponseRedirect, FileResponse, Http404
 from django.urls import reverse
 from django.core.paginator import Paginator
-from zahra.models import SliderModel, Information, PopularDestination, Testimonials, SpecialModel, MessagesModel, HotelModel, Category, BlogModel, VisaDestination
+from zahra.models import SliderModel, Information, PopularDestination, Testimonials, SpecialModel, MessagesModel, HotelModel, Category, BlogModel, VisaDestination, SiteMapModel
 # Create your views here.
 
 
@@ -98,3 +98,19 @@ def blogs_details(request, slug):
     }
 
     return render(request, 'blog-singlemah.html', context=context)
+
+def sitemap_view(request, slug):
+    sitemap_obj = get_object_or_404(SiteMapModel, slug=slug)
+    try:
+        file_handle = sitemap_obj.file.open('rb')
+
+        # استفاده از FileResponse بهترین گزینه برای فایل‌های استاتیک است
+        # حتما content_type را application/xml ست کنید
+        response = FileResponse(file_handle, content_type='application/xml')
+
+        # این خط باعث می‌شود مرورگر فایل را دانلود نکند و مستقیما نمایش دهد
+        response['Content-Disposition'] = 'inline'
+
+        return response
+    except FileNotFoundError:
+        raise Http404("فایل فیزیکی یافت نشد.")

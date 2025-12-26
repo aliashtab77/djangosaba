@@ -1,8 +1,11 @@
+import os.path
+
 from django.db import models
 from django_ckeditor_5.fields import CKEditor5Field
 from django.urls import reverse
 from json import dumps
 from django.utils.html import strip_tags
+from os.path import basename
 # Create your models here.
 
 
@@ -195,3 +198,12 @@ class BlogModel(models.Model):
         }
         return dumps(schema, ensure_ascii=False)
 
+
+class SiteMapModel(models.Model):
+    file = models.FileField(upload_to="sitemaps/", verbose_name="فایل سایت مپ خود را وارد کنید")
+    slug = models.SlugField(unique=True,allow_unicode=True,verbose_name="مسیر")
+    def __str__(self):
+        return self.slug
+    class Meta:
+        verbose_name_plural = "سایت مپ ها"
+        verbose_name = "سایت مپ"
